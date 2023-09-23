@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+<head>
+    <title>FISA</title>
+    
+</head>
+
+<body style="overflow-y:scroll;">
+  <h1> CPSC 415 FISA Project </h1>
+    <h4> Jad Bataha, Ananya Purushottam, Zayyan Naveed </h4>
+  <div class="form-body">
+    <div class="row">
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Can the government spy on you?</h3>
+                    <p>Fill in the data below.</p>
+                    <h5 class="neonText"><b>If you get a "Proof found" message, the government can spy on you. <br>
+                    If you get a "Completion Found" message, the governmen't CANNOT spy on you.</b></h5>
+
+                    <!--Form inputs-->
+                    <form class = "grid" action = "/result" method = "POST">
+
+                      <!-- Question 1 -->
+                      <div class="col-md-12">
+                        <select name="acquisition" class = "Input form-select mt-3" required>
+                            <option selected disabled value="">-- Did the Government acquire your message through a device? --</option>
+                            <option value="formula(acquisition(govt,message,device)).">Yes</option>
+                            <option value="">No</option>
+                        </select>
+                      </div>
+
+                      <!-- Question 2 -->
+                      <div class="col-md-12">
+                        <select name="selDeviceE" class = "Input form-select mt-3" required>
+                            <option selected disabled value="">-- Was the device used by the government Electronic? --</option>
+                            <option value="formula(electronic(device)).">Yes</option>
+                            <option value="">No</option>
+                        </select>
+                      </div>
+
+                    <!-- Question 3 -->
+                    <div class="col-md-12">
+                      <select name="selDeviceM" class = "Input form-select mt-3" required>
+                          <option selected disabled value="">-- Was the device used by the government Mechanical? --</option>
+                          <option value="formula(mechanical(device)).">Yes</option>
+                          <option value="">No</option>
+                      </select>
+                  </div>
+
+                    <!-- Question 4 -->
+                    <div class="col-md-12">
+                      <select name="wire" class = "Input form-select mt-3" required>
+                          <option selected disabled value="">-- Message transmitted via Wire? --</option>
+                          <option value="formula(wire(message)).">Yes</option>
+                          <option value="">No</option>
+                      </select>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="col-md-12">
+                      <select name="radio" class = "Input form-select mt-3" required>
+                          <option selected value="">-- Message transmitted via radio? --</option>
+                          <option value="formula(radio(message)).">Yes</option>
+                          <option value="">No</option>
+                      </select>
+                      </div>
+
+                        <!-- Question 6 -->
+                        <div class="col-md-12">
+                          <select name="sender" class = "Input form-select mt-3" required>
+                              <option selected value="">-- Were you the sender? --</option>
+                              <option value="formula(sender(P)).">Yes</option>
+                              <option value="formula(sender(F)).">No</option>
+                          </select>
+                      </div>
+
+                        <!-- Question 7 -->
+                        <div class="col-md-12">
+                          <select name="receiver" class = "Input form-select mt-3" required>
+                              <option selected value="">-- Were you the receiver? --</option>
+                              <option value="formula(receiver(P)).">Yes</option>
+                              <option value="formula(receiver(F)).">No</option>
+                          </select>
+                      </div>
+
+                        <!-- Question 8 -->
+                        <div class="col-md-12">
+                        <select name="USP" class = "Input form-select mt-3" required>
+                            <option selected value="">-- Are you a US Person? --</option>
+                            <option value="formula(USP(P)).">Yes</option>
+                            <option value="">No</option>
+                        </select>
+                      </div>
+
+                        <!-- Question 9 -->
+                        <div class="col-md-12">
+                          <select name="inUSP" class = "Input form-select mt-3" required>
+                              <option selected value="">-- Were you in the US when the messages were exchanged? --</option>
+                              <option value="formula(inUS(P)).">Yes</option>
+                              <option value="">No</option>
+                          </select>
+                      </div>
+
+                        <!-- Question 10 -->
+                        <div class="col-md-12">
+                        <select name="Target" class = "Input form-select mt-3" required>
+                            <option selected value="">-- Were you the target of US Government communications? --</option>
+                            <option value="formula(target(P)).">Yes</option>
+                            <option value="">No</option>
+                        </select>
+                      </div>
+
+                        <!-- Question 11 -->
+                        <div class="col-md-12">
+                        <select name="REP" class = "Input form-select mt-3" required>
+                            <option selected value="">-- In this instance, did you have a Reasonable Expectation of Privacy? --</option>
+                            <option value="formula(REP(P)).">Yes</option>
+                            <option value="">No</option>
+                        </select>
+                      </div>
+
+                        <!-- Question 12 -->
+                        <div class="col-md-12">
+                          <select name="Consent" class = "Input form-select mt-3" required>
+                              <option selected value="">-- Did you give your consent to have your messages monitored? --</option>
+                              <option value="formula(consent).">Yes</option>
+                              <option value="formula(not(consent)).">No</option>
+                          </select>
+                      </div>
+
+                        <!-- Question 13 -->
+                        <div class="col-md-12">
+                          <select name="Comp_Trespass" class = "Input form-select mt-3" required>
+                              <option selected value="">-- Does this fall under the category of communications of computer trespassers that would be permissible under section 2511(2)(i) of title 18? --</option>
+                              <option value="formula(comp_trespass(message)).">Yes</option>
+                              <option value="formula(not(comp_trespass(message))).">No</option>
+                          </select>
+                      </div>
+
+                        <!-- Question 14 -->
+                        <div class="col-md-12">
+                          <select name="Install" class = "Input form-select mt-3" required>
+                              <option selected value="">-- Was the device installed in the US? --</option>
+                              <option value="formula(installed(device)).">Yes</option>
+                              <option value="">No</option>
+                          </select>
+                      </div>
+
+                          <!-- Question 15 -->
+                          <div class="col-md-12">
+                          <select name="Use" class = "Input form-select mt-3" required>
+                              <option selected value="">-- Was the device used in the US? --</option>
+                              <option value="formula(used(device)).">Yes</option>
+                              <option value="">No</option>
+                          </select>
+                      </div>
+
+                      <!-- Question 16 -->
+                      <div class="col-md-12">
+                          <select name="intentional" class = "Input form-select mt-3" required>
+                              <option selected value="">-- Was the acquisition of the message intentional? --</option>
+                              <option value="formula(acquisition_intentional).">Yes</option>
+                              <option value="">No</option>
+                          </select>
+                      </div>
+
+                        <!-- Question 17 -->
+                        <div class="col-md-12">
+                          <select name="inUSDevice" class = "Input form-select mt-3" required>
+                              <option selected value="">-- Was the device in the US? --</option>
+                              <option value="formula(inUS(device)).">Yes</option>
+                              <option value="">No</option>
+                              <br>
+                          </select>
+                      </div>
+    
+                      
+                      <center><div class="form-button mt-3">
+                        <br>
+                        <button id="submit" type="submit" class="btn btn-primary file_submit">Check</button>
+                    </div></center>
+                      
+                   </form>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+
+
+
+
+
+  
+</body>
+
+</html>
